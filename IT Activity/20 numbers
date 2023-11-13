@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+void bubbleSort(int arr[], int n, int ascending) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (ascending) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            } else {
+                if (arr[j] < arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+
+float calculateAverage(int arr[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    return (float) sum / n;
+}
+
+int main() {
+    int numbers[20];
+    
+    printf("Enter 20 numbers:\n");
+    for (int i = 0; i < 20; i++) {
+        printf("Number %d: ", i + 1);
+        scanf("%d", &numbers[i]);
+    }
+    
+    int ascending;
+    printf("Sort in ascending order (1) or descending order (0): ");
+    scanf("%d", &ascending);
+    
+    bubbleSort(numbers, 20, ascending);
+    
+    printf("\nSorted numbers: ");
+    for (int i = 0; i < 20; i++) {
+        printf("%d ", numbers[i]);
+    }
+    
+    float average = calculateAverage(numbers, 20);
+    printf("\nAverage: %.2f\n", average);
+    
+    return 0;
+}
